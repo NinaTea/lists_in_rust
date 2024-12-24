@@ -1,3 +1,5 @@
+use std::mem;
+
 // concepto curioso: no uniformidad de guardado de datos en la lista
 
 // Every enum has to store a tag to specify
@@ -43,5 +45,14 @@ impl List {
     // Self referst to the type next to impl
     pub fn new() -> Self {
         return List { head: Link::Empty };
+    }
+
+    pub fn push(&mut self, elem: i32) {
+        let new_node = Box::new(Node {
+            elem: elem,
+            next: mem::replace(&mut self.head, Link::Empty),
+        });
+
+        self.head = Link::More(new_node);
     }
 }
