@@ -6,3 +6,6 @@
 
 ``
 
+# Option<T>
+
+enum T may or may not exist.
